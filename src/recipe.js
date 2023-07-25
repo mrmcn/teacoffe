@@ -50,28 +50,28 @@
 
 import { nanoid } from 'nanoid'
 
-function Product(props) {
-  const BTN = [
+function Product({ id, name, count, handleIncreaseClick }) {
+  const BTNs = [
     { a: '+', b: 1 },
     { a: '-', b: -1 },
   ]
-  const listBtn = BTN.map((c) => (
+  const listBtn = BTNs.map((btn) => (
     <button
       key={nanoid()}
       onClick={onClick}
-      value={c.b}
+      value={btn.b}
     >
-      {c.a}
+      {btn.a}
     </button>
   ))
 
   function onClick(e) {
-    props.handleIncreaseClick(props.id, props.count + Number(e.target.value))
+    handleIncreaseClick(id, count + Number(e.target.value))
   }
 
   return (
     <li>
-      {props.name} (<b>{props.count}</b>){listBtn}
+      {name} (<b>{count}</b>){listBtn}
     </li>
   )
 }
